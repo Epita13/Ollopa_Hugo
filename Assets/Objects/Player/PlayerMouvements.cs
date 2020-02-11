@@ -45,13 +45,13 @@ public class PlayerMouvements : KinematicBody2D
     public override void _PhysicsProcess(float delta)
     {
         vel.x = 0;
-        if (canMove){
+        if (canMove)
+        {
             HorizontalMouvement();
             JUMP();
         }
 
         vel.y += GRAVITY;
-
         MoveAndSlide(vel,UP);
     }
 
@@ -63,12 +63,11 @@ public class PlayerMouvements : KinematicBody2D
         {
           canMove = false;
         }
-    if (Input.IsActionJustPressed("mouse1")){
-
-        Vector2 pos = GetGlobalMousePosition();
-        SolarPanel sp = (SolarPanel)Building.prefabs[Building.Type.SolarPanel].Instance();
-        sp.Place(pos);
-        
-    }
+        if (Input.IsActionJustPressed("mouse1"))
+        {
+            Vector2 pos = GetGlobalMousePosition();
+            SolarPanel sp = (SolarPanel)Building.prefabs[Building.Type.SolarPanel].Instance();
+            sp.Place(pos);
+        }
   }
 }

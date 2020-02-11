@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Objects/Tools/Raygun/Raygun.cs" type="Script" id=1]
+[ext_resource path="res://Laser gun.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Raygun",
+"speed": 5.0
+} ]
+
+[node name="Raygun" type="KinematicBody2D"]
+position = Vector2( 758.655, 451.58 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite_Raygun" type="AnimatedSprite" parent="."]
+position = Vector2( 2.60022, 4.1087 )
+scale = Vector2( 4.2225, 3.69745 )
+frames = SubResource( 1 )
+animation = "Raygun"

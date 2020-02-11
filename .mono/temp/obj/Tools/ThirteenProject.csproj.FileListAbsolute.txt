@@ -1,0 +1,6 @@
+D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyReference.cache
+D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csproj.CoreCompileInputs.cache
+D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.dll
+D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.pdb
+D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.dll
+D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.pdb

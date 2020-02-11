@@ -77,7 +77,7 @@ public class Building : Node2D
         return;
     }
 
-    // Détruit le batmiment
+    // Détruit le batiment
     public void Destroy()
     {
         Remove();
