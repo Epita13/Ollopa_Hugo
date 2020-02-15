@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/laser.png-2e01af401ac204054858e262ad4abec1.stex"
+path="res://.import/Laser gun.png-8553ca0ba133c361f54b864f70bd4f01.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/Items/laser.png"
-dest_files=[ "res://.import/laser.png-2e01af401ac204054858e262ad4abec1.stex" ]
+source_file="res://Assets/Ressources/Imgs/Items/Laser gun.png"
+dest_files=[ "res://.import/Laser gun.png-8553ca0ba133c361f54b864f70bd4f01.stex" ]
 
 [params]
 

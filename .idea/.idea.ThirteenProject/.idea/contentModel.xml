@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Tommi\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Tommi\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_ThirteenProject.-1603707211.00" t="ExcludeRecursive" />
+    <e p="D:\GitHub\Godot Tuto\Ollopa_Hugo" t="IncludeRecursive">
+      <e p=".mono\temp\bin" t="ExcludeRecursive" />
+      <e p=".mono\temp\obj" t="ExcludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Objects" t="Include">
+          <e p="Buildings" t="Include">
+            <e p="SolarPanel" t="Include">
+              <e p="SolarPanel.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Player" t="Include">
+            <e p="PlayerMouvements.cs" t="Include" />
+          </e>
+          <e p="Tools" t="Include">
+            <e p="Raygun" t="Include">
+              <e p="Explosion.cs" t="Include" />
+              <e p="RayCast2D.cs" t="Include" />
+              <e p="Raygun.cs" t="Include" />
+              <e p="Scene_raygun.cs" t="Include" />
+              <e p="Wall.cs" t="Include" />
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="ToolBar" t="Include">
+              <e p="ItemBox.cs" t="Include" />
+              <e p="ToolBar.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scenes" t="Include">
+          <e p="SceneGeneration" t="Include">
+            <e p="SceneGenerationScript.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Objects" t="Include">
+            <e p="Block.cs" t="Include" />
+            <e p="Building.cs" t="Include" />
+            <e p="Chunk.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+            <e p="Liquid.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+            <e p="StorageItems.cs" t="Include" />
+            <e p="StorageLiquids.cs" t="Include" />
+            <e p="StorageUsables.cs" t="Include" />
+            <e p="Usable.cs" t="Include" />
+            <e p="World.cs" t="Include" />
+          </e>
+          <e p="Tools" t="Include">
+            <e p="SlideBar.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Properties" t="Include">
+        <e p="AssemblyInfo.cs" t="Include" />
+      </e>
+      <e p="ThirteenProject.csproj" t="IncludeRecursive" />
+      <e p="ThirteenProject.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

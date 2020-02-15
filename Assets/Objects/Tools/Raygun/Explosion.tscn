@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Ressources/Imgs/Items/Sparkle.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.866667, 1 )
+colors = PoolColorArray( 0.227051, 0.0168514, 0.214529, 1, 0.851852, 0.851852, 0.851852, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 50, 30, 2 )
+flag_disable_z = true
+spread = 40.0
+gravity = Vector3( 0, -10, 0 )
+initial_velocity = 34.48
+initial_velocity_random = 1.0
+angular_velocity = 4.14784e-043
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 45.0
+angle_random = 1.0
+color_ramp = SubResource( 2 )
+
+[node name="Particles2D" type="Particles2D"]
+position = Vector2( 1245.41, 256.268 )
+emitting = false
+amount = 30
+speed_scale = 2.94
+process_material = SubResource( 3 )
+texture = ExtResource( 1 )

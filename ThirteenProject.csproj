@@ -51,7 +51,11 @@
   <ItemGroup>
     <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
+    <Compile Include="Assets\Objects\Tools\Raygun\Explosion.cs" />
+    <Compile Include="Assets\Objects\Tools\Raygun\RayCast2D.cs" />
     <Compile Include="Assets\Objects\Tools\Raygun\Raygun.cs" />
+    <Compile Include="Assets\Objects\Tools\Raygun\Scene_raygun.cs" />
+    <Compile Include="Assets\Objects\Tools\Raygun\Wall.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ItemBox.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ToolBar.cs" />
     <Compile Include="Assets\Scenes\SceneGeneration\SceneGenerationScript.cs" />
