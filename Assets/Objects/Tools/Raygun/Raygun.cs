@@ -6,11 +6,12 @@ public class Raygun : Node2D
 {
 
 	[Signal]
-	public delegate void hit();
+	public delegate void hit(Vector2 xy);
 
 	public override void _Ready()
     {
-		
+		AnimatedSprite ray = GetNode<AnimatedSprite>("Sprite_Ray");
+		ray.Visible=false;
     }
 	
 	public void shoot()
