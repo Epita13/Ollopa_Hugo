@@ -36,9 +36,6 @@
           <e p="SceneGeneration" t="Include">
             <e p="SceneGenerationScript.cs" t="Include" />
           </e>
-          <e p="Time" t="Include">
-            <e p="Time.cs" t="Include" />
-          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="Objects" t="Include">
