@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scenes/SceneGeneration/SceneGenerationScript.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Objects/Tilesets/BlocksTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Objects/Player/Player.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.97006, 1 )
+colors = PoolColorArray( 0, 0.724915, 0.867188, 1, 0.0393732, 0.405148, 0.884871, 1, 0.0521851, 0.301097, 0.890625, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
 [node name="SceneGeneration" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,7 +25,6 @@ scale = Vector2( 1000, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 493.294, -350.015 )
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
@@ -28,3 +34,9 @@ current = true
 zoom = Vector2( 0.7, 0.7 )
 
 [node name="Cycle_DayNight" type="CanvasModulate" parent="."]
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 6710.4, 10348.8 )
+scale = Vector2( 16.5217, 17198.5 )
+z_index = -5
+texture = SubResource( 2 )

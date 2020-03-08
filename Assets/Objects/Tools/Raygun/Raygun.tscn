@@ -45,4 +45,6 @@ position = Vector2( 49.0471, -0.742824 )
 enabled = true
 exclude_parent = false
 cast_to = Vector2( 2000, 0 )
+collision_mask = 3075
+collide_with_areas = true
 script = ExtResource( 4 )

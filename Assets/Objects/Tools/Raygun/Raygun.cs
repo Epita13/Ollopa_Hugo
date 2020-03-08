@@ -12,16 +12,15 @@ public class Raygun : Node2D
     {
 		AnimatedSprite ray = GetNode<AnimatedSprite>("Sprite_Ray");
 		ray.Visible=false;
+		//if (GetTree().GetNodesInGroup("SceneRaygun").Count == 1) 
+		//	Connect("hit",(Node)GetTree().GetNodesInGroup("SceneRaygun")[0], "Show_hit" );
     }
 	
 	public void shoot()
 	{
-		//Particles2D expl = GetNode<Particles2D>("Explosion");
 		RayCast2D shoot_ray = GetNode<RayCast2D>("shoot_ray");
 		if (shoot_ray.IsColliding())
 		{
-			/*expl.Position = (shoot_ray.GetCollisionPoint());
-			expl.Emitting = true;*/
 			EmitSignal("hit", shoot_ray.GetCollisionPoint());
 		}
 	}
@@ -31,14 +30,14 @@ public class Raygun : Node2D
 
 	public override void _PhysicsProcess(float delta)
     {
-	    
 	    AnimatedSprite raygun = GetNode<AnimatedSprite>("Sprite_Raygun");
 	    AnimatedSprite ray = GetNode<AnimatedSprite>("Sprite_Ray");
+	    RayCast2D raycast = GetNode<RayCast2D>("shoot_ray");
 	    
 	    
 	    raygun.FlipV = GetGlobalMousePosition().x < Position.x;
 	    LookAt(GetGlobalMousePosition());
-		
+	    
 		
 	    if (Input.IsActionPressed("shoot"))
 	    {

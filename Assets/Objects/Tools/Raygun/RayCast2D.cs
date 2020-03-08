@@ -10,11 +10,10 @@ public class RayCast2D : Godot.RayCast2D
     {
         
     }
-	
-	
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+
+
+    public override void _Process(float delta)
+    {
+	    GD.Print(this.CastTo);
+    }
 }

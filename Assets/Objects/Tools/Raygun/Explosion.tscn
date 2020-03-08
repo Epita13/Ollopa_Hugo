@@ -17,7 +17,7 @@ spread = 40.0
 gravity = Vector3( 0, -10, 0 )
 initial_velocity = 34.48
 initial_velocity_random = 1.0
-angular_velocity = 4.14784e-043
+angular_velocity = 4.14784e-43
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 45.0
@@ -26,7 +26,6 @@ color_ramp = SubResource( 2 )
 
 [node name="Particles2D" type="Particles2D"]
 position = Vector2( 1245.41, 256.268 )
-emitting = false
 amount = 30
 speed_scale = 2.94
 process_material = SubResource( 3 )

@@ -5,17 +5,18 @@ public class Scene_raygun : Node2D
 {
     public override void _Ready()
     {
-        KinematicBody2D raygun = GetNode<KinematicBody2D>("Raygun");
-        raygun.Connect("hit",raygun, "show_hit" );
+        if (GetTree().GetNodesInGroup("SceneRaygun").Count == 1) 
+        	Connect("hit",(Node)GetTree().GetNodesInGroup("SceneRaygun")[0], "Show_hit" );
     }
 
-    public void Raygun_hit(Vector2 hit_location)
+    public void Show_hit(Vector2 hit_location)
     {
         //RayCast2D shoot_ray = GetNode<RayCast2D>("shoot_ray");
         Particles2D expl = GetNode<Particles2D>("Explosion");
         AddChild(expl);
-        expl.SetPosition(hit_location);
-        expl.SetEmitting(true);
+        expl.Position=hit_location;
+        expl.Emitting=true;
+        RemoveChild(expl);
     }
 }
 

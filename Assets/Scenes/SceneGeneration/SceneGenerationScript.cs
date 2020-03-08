@@ -25,7 +25,7 @@ using System;
         World.Draw();
         Building.Init(this);
 
-        length_day = 60 * 60 * 10;  //Nombre de ticks par jour (10 minutes)
+        length_day = 60 * 30;  //Nombre de ticks par jour (10 minutes)
         tick = length_day / 2;      //On commence à midi.
     }
 
@@ -41,7 +41,11 @@ using System;
         {
             cycle_test(Day.NIGHT);
         }
-        Console.WriteLine("{0}  -  {1}  |  {3}",hours,tick,cycle);
+        else
+        {
+            cycle_test(Day.DAY);
+        }
+        GD.Print(hours);
     }
 
     public void cycle_test(Day new_cycle)
@@ -50,21 +54,21 @@ using System;
         {
             cycle = new_cycle;
             Tween twe = new Tween();
-            if (cycle == Day.NIGHT)
+            if (cycle == Day.NIGHT) 
             {
                 AddChild(twe);
                 CanvasModulate CM = GetNode<CanvasModulate>("Cycle_DayNight");
-                twe.InterpolateProperty(CM,"Color",Colors.White,Colors.DarkSlateBlue,10,Tween.TransitionType.Sine,Tween.EaseType.In);
+                twe.InterpolateProperty(CM,"color",Color.Color8(255,255,255),Color.Color8(50,50,50),3,Tween.TransitionType.Sine,Tween.EaseType.In);
                 twe.Start();
-                RemoveChild(twe);
+                //RemoveChild(twe);
             }
             else
             {
                 AddChild(twe);
                 CanvasModulate CM = GetNode<CanvasModulate>("Cycle_DayNight");
-                twe.InterpolateProperty(CM,"Color",Colors.DarkSlateBlue,Colors.White,10,Tween.TransitionType.Sine,Tween.EaseType.In);
+                twe.InterpolateProperty(CM,"color", Color.Color8(50,50,50),Color.Color8(255,255,255),3,Tween.TransitionType.Sine,Tween.EaseType.In);
                 twe.Start();
-                RemoveChild(twe);
+                //RemoveChild(twe);
             }
         }
     }

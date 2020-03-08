@@ -5,11 +5,16 @@
 [ext_resource path="res://Assets/Objects/Tools/Raygun/Raygun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Objects/Tools/Raygun/Explosion.tscn" type="PackedScene" id=4]
 
-[node name="Scene_raygun" type="Node2D"]
+[node name="Scene_raygun" type="Node2D" groups=[
+"SceneRaygun",
+]]
 script = ExtResource( 1 )
 
 [node name="Wall" parent="." instance=ExtResource( 2 )]
 position = Vector2( 67.8303, -32.9762 )
+input_pickable = false
+collision_layer = 3075
+collision_mask = 3075
 
 [node name="Raygun" parent="." instance=ExtResource( 3 )]
 
