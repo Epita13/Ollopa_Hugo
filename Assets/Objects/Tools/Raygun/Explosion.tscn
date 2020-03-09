@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Ressources/Imgs/Items/Sparkle.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Objects/Tools/Raygun/Explosion.cs" type="Script" id=2]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.866667, 1 )
@@ -25,8 +26,8 @@ angle_random = 1.0
 color_ramp = SubResource( 2 )
 
 [node name="Particles2D" type="Particles2D"]
-position = Vector2( 1245.41, 256.268 )
 amount = 30
 speed_scale = 2.94
 process_material = SubResource( 3 )
 texture = ExtResource( 1 )
+script = ExtResource( 2 )

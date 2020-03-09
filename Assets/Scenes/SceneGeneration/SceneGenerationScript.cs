@@ -25,7 +25,7 @@ using System;
         World.Draw();
         Building.Init(this);
 
-        length_day = 60 * 30;  //Nombre de ticks par jour (10 minutes)
+        length_day = 60 * 30;       //Nombre de ticks par jour (10 minutes)
         tick = length_day / 2;      //On commence à midi.
     }
 

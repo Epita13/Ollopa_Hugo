@@ -14,6 +14,6 @@ public class RayCast2D : Godot.RayCast2D
 
     public override void _Process(float delta)
     {
-	    GD.Print(this.CastTo);
+	    
     }
 }
