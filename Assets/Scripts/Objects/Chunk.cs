@@ -5,154 +5,237 @@ using System.Collections.Generic;
 
 public class Chunk
 {
+
+    /*
+        Object :  Chunk
+
+        /!\ Initialisation static : NON NECESSAIRE.
+        /!\ Classe Initialisées necessaire : World
+
+        Description de l'object :
+            Un Chunk est une partie rectangulaire du monde de taille [size,height] blocks, 
+            Ainsi un ensemble chunk consiste a faire une partition du monde.
+            Les coordonnées manipulées dans cette classe sont strictement locale, cad x = [0,size-1] et y = [ChunkMin,ChunkMax].
+            Chaque Chunk possede une sorte de matrix dynamique de Block ("blocks").
+
+        Description des parametres:
+            (static) int size : est la taille en blocks du chunk en x.
+            int id : L'id definis la du chunk position dans le monde. (=> [id*size, (id*size)+size[)
+            (const) int ChunkMin, ChunkMax : definissent les limites en y (inclusives) des Chunks et donc du Monde.
+            (const) int height : est la hauteur du Monde. 
+            (const) int seaLevel : est la position y theorique du niveau de la mer.
+            (const) int minYGeneration, maxYGeneration : sont les positions y des limites (inclusives) de la generation.
+    */
+
+
+
     /* Constante */
-    public static readonly int chunk_size = 16;
+    public static readonly int size = 16;
+    public int id;
 
-    private const int chunk_max = 140;
-    private const int chunk_min = -40;
-    private const int sea_level = 0;
-    private const float mult_amplified = 0.7F;
-    private const int chunk_minLimit_generation = -2;
+    public const int chunkMax = 100;
+    public const int chunkMin = 0;
+    public const int height = (chunkMax-chunkMin)+1;
+    public const int seaLevel = chunkMin + 20;
+    public const int minYGeneration = seaLevel - 5;
+    public const int maxYGeneration = seaLevel + 20;
 
+    /*Trees*/
+    public const float TREE_FREQUENCY = 1.5f / 16.0f; 
 
-    private int chunk_mid;
     private List<List<Block>> blocks;
-    private int chunk_x;
 
-    private Chunk chunk_left;
-    private Chunk chunk_right;
-
-    public Chunk(int chunk_x, Chunk chunk_left = null, Chunk chunk_right = null){
-        this.chunk_x = chunk_x;
-        this.chunk_left = chunk_left;
-        this.chunk_right = chunk_right;
-        blocks = InitBlocksList();
-        this.chunk_mid = GetChunkYGround();
+    public Chunk(int id)
+    {
+        this.id = id;
         Generate();
     }
 
     public void Generate()
     {
 
-        FonctionCourbe courbe = null;
-        courbe = new FonctionCourbe(chunk_size, IsInvert(), chunk_mid, chunk_minLimit_generation, mult_amplified);
-
-        for (int x = 0; x < chunk_size; x++)
+        OpenSimplexNoise noise = World.noise;
+        blocks = new List<List<Block>>();
+        
+        for (int x = 0; x < size; x++)
         {
-            int ground_colon = courbe.Get(x);
-            for (int y = chunk_min; y <= chunk_max; y++)
+            int maximumY = GetMaximumY(x, noise);
+            blocks.Add(new List<Block>());
+            for (int y = chunkMin; y <= chunkMax; y++)
             {
-                /*Temporaire*/
-                if (y == ground_colon)
-                    blocks[x].Add(new Block(1,x+chunk_x,y));
-                else if (y < ground_colon && y>ground_colon-4)
-                    blocks[x].Add(new Block(2,x+chunk_x,y));
-                else if (y <= ground_colon-4){
-                    //draw cell
-                    blocks[x].Add(new Block(0,x+chunk_x,y));
+                if (y == chunkMin)
+                {
+                    blocks[x].Add(new Block(Block.Type.WestStone, x+(id*size), y, true));
                 }
+                else if (y<=maximumY-6)
+                {
+                    blocks[x].Add(new Block(Block.Type.Stone, x+(id*size), y, true));
+                }else if (y<=maximumY-1)
+                {
+                    blocks[x].Add(new Block(Block.Type.Dirt, x+(id*size), y, true));
+                }else if (y==maximumY)
+                {
+                    blocks[x].Add(new Block(Block.Type.Grass, x+(id*size), y, true));
+                }else
+                {
+                    blocks[x].Add(new Block(Block.Type.Air, x+(id*size), y));
+                }
+            }
+        }
+        
+        /*Generation des Arbres*/
+        TreesGeneration();
+
+    }
+
+    private void TreesGeneration()
+    {
+        for (int x = 0; x < size; x++)
+        {
+            float r = (float)World.random.NextDouble();
+            if (r <= TREE_FREQUENCY)
+            {
+                int y = GetGroundY(x);
+                Tree.SpawnTree(new Vector2(x+id*size,y));
             }
         }
     }
 
+    private int GetGroundY(int x)
+    {
+        int y = 0;
+        while (y < height && blocks[x][y].GetType!=Block.Type.Air)
+            y++;
+        return y;
+    }
+    
+    private int GetMaximumY(int x, OpenSimplexNoise noise)
+    {
+        float rayon = (World.size*size) / (2*Mathf.Pi);
+        float step = (2*Mathf.Pi)/ (World.size*size);
+        float angle = (x+(id*size))*step;
+        Vector2 point = new Vector2(Mathf.Cos(angle)*rayon, Mathf.Sin(angle)*rayon);
+        float grayLevel = noise.GetNoise2dv(point) + 1.0f; // [0,2.0]
+        float a = (maxYGeneration-minYGeneration)/2; // coeficient directeur
+        float b = minYGeneration; // image a l'origine
+        return (int)((a*grayLevel)+b);
+
+    }
+
+    /// Affiche le chunk sur la tilemap de la scene
     public void Draw()
     {
-        TileMap Ground = World.tilemp_blocks;
         foreach (var colon in blocks)
         {
             foreach (var block in colon)
             {
-                Ground.SetCell(block.x, -block.y, block.tileId);
+                DrawBlock(block);
+                DrawBlockBack(block);
+            }
+        }
+    }
+    
+    /// Affiche le chunk sur la tilemap de la scene a une position specifique
+    public void DrawClone(int x)
+    {
+        foreach (var colon in blocks)
+        {
+            foreach (var block in colon)
+            {
+                DrawBlockClone(block, x);
+                DrawBlockBackClone(block, x);
             }
         }
     }
 
-
-    private int GetChunkYGround()
+    /// Cache le chunk du tilemap de la scene
+    public void Hide()
     {
-        if (chunk_left==null && chunk_right==null)
-            return sea_level + 5;
-        if (chunk_left!=null)
-            return chunk_left.GetRightMaxY();
-        return chunk_right.GetLeftMaxY();
-    }
-
-    private List<List<Block>> InitBlocksList()
-    {
-        List<List<Block>> tmp = new List<List<Block>>();
-        for (int i = 0; i < chunk_size; i++){
-            tmp.Add(new List<Block>());
+        foreach (var colon in blocks)
+        {
+            foreach (var block in colon)
+            {
+                HideBlock(block);
+                HideBlockBack(block);
+            }
         }
-        return tmp;
     }
 
-    private bool IsInvert()
+    /// Verifie si les coordonées sont correct
+    private bool IsInChunk(int x, int y)
     {
-        return chunk_right!=null;
+        return (x>=0 && x<size && y>=0 && y<=(chunkMax-chunkMin));
     }
 
-    private int GetMaxYColon(int x)
-    {   
-        List<Block> lst = blocks[x];
-        return lst[lst.Count-1].y;
-    }
-    public int GetLeftMaxY()
+    /// Retourne le blocks de la coordonée (coordonées locales). retourne null si il n'y a pas de block
+    public Block GetBlock(int x, int y)
     {
-        return GetMaxYColon(0);
-    }
-    public int GetRightMaxY()
-    {
-        return GetMaxYColon(chunk_size-1);
+        if (!IsInChunk(x,y))
+            throw new OutOfBoundsException2D("GetBlock", x, 0, size-1, y, chunkMin, chunkMax);
+        return blocks[x][y];
     }
 
-}
+    /// Ajoute un block au Chunk (coordonées locales)
+    public void AddBlock(int x, int y, Block.Type type)
+    {
+        if (!IsInChunk(x,y))
+            throw new OutOfBoundsException2D("AddBlock", x, 0, size-1, y, chunkMin, chunkMax);
+        blocks[x][y].SetType(type);
+        DrawBlock(blocks[x][y]);
+    }
 
+    /// Enleve un block au Chunk (coordonées locales)
+    public void RemoveBlock(int x, int y)
+    {
+        if (!IsInChunk(x,y))
+            throw new OutOfBoundsException2D("RemoveBlock", x, 0, size-1, y, chunkMin, chunkMax);
+        HideBlock(blocks[x][y]);
+        blocks[x][y].SetType(Block.Type.Air);
+    }
 
-class FonctionCourbe
-{
-        float distance; // Distance en radian
-        float begin; // Debut en radian
-        float mult; // multiplicateur en fonction de la distance
-        double step;
-        int chunk_mid;
+    /// Affiche un block au Chunk
+    public void DrawBlock(Block b)
+    {
+        World.IsInitWorldTest("DrawBlock");
+        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(b.GetType));
+    }
+    
+    /// Affiche un block au Chunk a une position specifique
+    public void DrawBlockClone(Block b, int x)
+    {
+        World.IsInitWorldTest("DrawBlock");
+        World.BlockTilemap.SetCell(b.x-(id*size)+x, -b.y+height, Block.GetIDTile(b.GetType));
+    }
 
-        int chunk_size; // taille en x du chunk
-        int min_generation;
-    public FonctionCourbe(int chunk_size, bool invert, int chunk_theoric_mid, int min_generation, float mult_amplified)
+    /// Cache un block au Chunk
+    public void HideBlock(Block b)
     {
-        this.chunk_size = chunk_size;
-        this.min_generation = min_generation;
-        do {
-        distance = (float)RandomRange(Mathf.Pi/4, Mathf.Pi);
-        begin = (float)(RandomRange(0,2*Mathf.Pi));
-        //mult = (float)((16/(3*Math.PI)) * distance + (14/3)) * mult_amplified;
-        mult = (float)((16/(3*Math.PI)) * distance + (14/3)) * mult_amplified;
-        step = distance / chunk_size;
-        if (!invert)
-            chunk_mid = chunk_theoric_mid - (int)(Math.Sin((0*step)+begin) * mult);
-        else
-            chunk_mid = chunk_theoric_mid - (int)(Math.Sin(((chunk_size-1)*step)+begin) * mult);
-        } while (!isGood());
+        World.IsInitWorldTest("HideBlock");
+        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(Block.Type.Air));
     }
-    private bool isGood()
+
+    public void DrawBlockBack(Block b)
     {
-        if (GetMidHeight() < min_generation)
-            return false;
-        return true;
+        if (b.isAutoGenerated)
+            World.BackBlockTilemap.SetCell(b.x, -b.y+height, 0);
     }
-    public int GetMidHeight()
+    public void DrawBlockBackClone(Block b, int x)
     {
-        return (Get(0) + Get(chunk_size-1)) / 2;
+        if (b.isAutoGenerated)
+            World.BackBlockTilemap.SetCell(b.x-(id*size)+x, -b.y+height, 0);
     }
-    public int Get(int x) 
+    /// Cache l'arriere d'un block
+    public void HideBlockBack(Block b)
     {
-        return (int)(Math.Sin((x*step)+begin) * mult) + chunk_mid;   
+        World.BackBlockTilemap.SetCell(b.x, -b.y+height, -1);
     }
-    /* Genere un double aleatoire entre min et max inclus */
-    private double RandomRange(double min, double max)
+
+    /// Renvoie la position x local a partir de la position x globale (=> modulo la taille d'un chunk)
+    public static int GetLocaleX(int x)
     {
-        Random random = World.random;
-        double dif = max - min;
-        return (random.NextDouble() * dif + min);
+        if (x < 0)
+            return size + (x % size);
+        return x % size;
     }
+
 }

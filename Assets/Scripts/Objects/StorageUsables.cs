@@ -2,31 +2,37 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class StorageUsables : Node
+public class StorageUsables
 {
     public int max;
 
-    public Dictionary<Usable.Type, int> inventory = new Dictionary<Usable.Type, int>{
-        {Usable.Type.laser, 1},
-        {Usable.Type.dirt, 0}
-    }; 
+    public Dictionary<Usable.Type, int> stokage;
 
     public StorageUsables(int max)
     {
         this.max = max;
+        Init();
     }
 
-    /// Ajoute des blocks dans l'inventaire
-    public void Add(Usable.Type type, int amount)
+    /// Ajoute des blocks dans le stokage
+    public bool Add(Usable.Type type, int amount)
     {
-        if (Usable.category[(int)type]!=Usable.Category.Tool)
-            inventory[type] += amount;
+        if (CanAdd(type, amount))
+        {
+            stokage[type] += amount;
+            return true;
+        }
+        return false;
     }
-    /// Enleve des blocks de l'inventaire 
-    public void Remove(Usable.Type type, int amount)
+    /// Enleve des blocks de le stokage
+    public bool Remove(Usable.Type type, int amount)
     {
-        if (Usable.category[(int)type]!=Usable.Category.Tool)
-            inventory[type] -= amount;
+        if (CanRemove(type, amount))
+        {
+            stokage[type] -= amount;
+            return true;
+        }
+        return false;
     }
 
     /// Verifie si il y a assez de blocks du type type
@@ -34,7 +40,7 @@ public class StorageUsables : Node
     {
         if (Usable.category[(int)type]==Usable.Category.Tool)
             return false;
-        return (inventory[type]-amount >= 0);
+        return (stokage[type]-amount >= 0);
     }
 
     /// Verifie si il n'y a pas trop de blocks
@@ -45,21 +51,38 @@ public class StorageUsables : Node
         return (GetCount()+amount <= max);
     }
 
-    /// Recupere le nombre d'item du type type dans l'inventaire
-    public float GetItemCount(Usable.Type type)
+    /// Recupere le nombre d'item du type type dans le stokage
+    public int GetItemCount(Usable.Type type)
     {
-        return inventory[type];
+        return stokage[type];
     }
 
     /// Donne le nombre de blocks au totale (compte pas les outils)
-    public float GetCount()
+    public int GetCount()
     {
         int sum = 0;
-        foreach (var c in inventory)
+        foreach (var c in stokage)
         {
             if (Usable.category[(int)c.Key]!=Usable.Category.Tool)
                 sum += c.Value;
         }
         return sum;
     }
+
+    /// Initialise le stockage
+    private void Init()
+    {
+        stokage = new Dictionary<Usable.Type, int>();
+        for (int i = 0; i < Usable.nbUsables; i++)
+        {
+            if (Usable.category[i]==Usable.Category.Tool)
+            {
+                stokage.Add((Usable.Type)i,1);
+            }else
+            {
+                stokage.Add((Usable.Type)i,0);
+            }
+        }
+    }
+    
 }

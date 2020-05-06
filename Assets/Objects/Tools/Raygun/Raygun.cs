@@ -5,53 +5,113 @@ using System.Reflection;
 public class Raygun : Node2D
 {
 
+
+	public const float POWER = 1000000.5f;
+	public const float RADIUS = 2500;
+	
 	[Signal]
 	public delegate void hit(Vector2 xy,Vector2 az);
 
 	[Signal]
 	public delegate void shooting(Vector2 xy, Vector2 az);
-	
+
+	private RayCast2D raycast;
+	private AnimatedSprite anSprite;
 	
 
 	public override void _Ready()
-    {
-	    Connect("shooting",(Node)GetTree().GetNodesInGroup("SceneRaygun")[0], "Shooting" );
-	    Connect("hit",(Node)GetTree().GetNodesInGroup("SceneRaygun")[0], "Show_hit" );
-    }
+	{
+		anSprite = GetNode<AnimatedSprite>("Sprite_Raygun");
+		raycast = anSprite.GetNode<RayCast2D>("shoot_ray");
+		raycast.CastTo = new Vector2(RADIUS,raycast.CastTo.y);
+	}
 	
 	public void shoot()
 	{
-		RayCast2D shoot_ray = GetNode<RayCast2D>("shoot_ray");
-		if (shoot_ray.IsColliding())
+		if (raycast.IsColliding())
 		{
-			EmitSignal("hit", Position,shoot_ray.GetCollisionPoint());
+			var hit_collider = raycast.GetCollider();
+			// Collide with a block
+			if (hit_collider is TileMap)
+			{
+				BlockCollision();
+			}else if (hit_collider is StaticBody2D)
+			{
+				// Collide with a tree
+				StaticBody2D s = (StaticBody2D) hit_collider;
+				if (s.GetGroups().Contains("tree"))
+				{
+					TreeCollosion();
+				}
+
+			}
+			
+			
 		}
 		else
 		{
-			EmitSignal("shooting",Position,GetGlobalMousePosition());
+			//GD.Print("shoot");
 		}
 	}
-	
-	
 
-	public override void _PhysicsProcess(float delta)
-    {
-	    AnimatedSprite raygun = GetNode<AnimatedSprite>("Sprite_Raygun");
-	    
-	    raygun.FlipV = GetGlobalMousePosition().x < Position.x;
-	    LookAt(GetGlobalMousePosition());
-	    
-	    if (Input.IsActionJustPressed("shoot"))
-	    {
-		    AudioStreamPlayer audio = GetNode<AudioStreamPlayer>("Shooting_Sound");
-		    audio.Playing = true;
-	    }
-	    
-	    if (Input.IsActionPressed("shoot"))
-	    {
-		    shoot();
-	    }
-	    
-    }
+	private void BlockCollision()
+	{
+		TileMap tilemap = (TileMap)raycast.GetCollider();
+		var hit_pos = raycast.GetCollisionPoint();
+		var raygun_pos = Position + GlobalPosition;
+		var vec = hit_pos - raygun_pos;
+		var block_pos = Convertion.Location2World(hit_pos);
+		var block_posF = Convertion.Location2WorldFloor(hit_pos);
+		if (vec.x >= 0 && vec.y >= 0)
+		{
+			if (block_pos.y == Mathf.Floor(block_pos.y))
+				block_posF += new Vector2(0,-1.0f);
+		} else if (vec.x < 0 && vec.y >= 0)
+		{
+			if (block_pos.y == Mathf.Floor(block_pos.y))
+				block_posF += new Vector2(0,-1.0f);
+			if (block_pos.x == Mathf.Floor(block_pos.x))
+				block_posF += new Vector2(-1.0f,0);
+		} else if (vec.x < 0 && vec.y < 0)
+		{
+			if (block_pos.x == Mathf.Floor(block_pos.x))
+				block_posF += new Vector2(-1.0f,0);
+		}
+
+		Block block_hit = World.GetBlock((int) block_posF.x, (int) block_posF.y);
+		if (block_hit.GetType != Block.Type.Air)
+			block_hit.Damage(POWER);
+	}
+
+	private void TreeCollosion()
+	{
+		Tree t = (Tree)raycast.GetCollider();
+		t.Damage(POWER);
+	}
+
+
+	public override void _Process(float delta)
+	{
+		if (PlayerState.GetState() != PlayerState.State.Normal || Player.UsableSelected != Usable.Type.Laser)
+			return;
+		
+		LookAt(GetGlobalMousePosition());
+
+		if (Input.IsActionPressed("mouse1"))
+		{
+			shoot();
+		}
+	}
+
+
+	public void Ray()
+	{
+		Vector2 globalRaycastPos = (new Vector2(Mathf.Cos(GlobalRotation)*raycast.Position.x, Mathf.Sin(GlobalRotation)*raycast.Position.y)) + GlobalPosition;
+		var d = raycast.GetCollisionPoint() - globalRaycastPos;
+		float length = d.Length();
+		Line2D s = GetNode<Line2D>("Ray");
+		s.Visible = true;
+		s.SetPointPosition(1, new Vector2(length/Scale.x, 0));
+
+	}
 }
-

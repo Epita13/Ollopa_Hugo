@@ -1,6 +1,22 @@
-D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyReference.cache
-D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csproj.CoreCompileInputs.cache
-D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.dll
-D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.pdb
-D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.dll
-D:\GitHub\Godot Tuto\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.pdb
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_main\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyReference.cache
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_main\.mono\temp\bin\Tools\ThirteenProject.dll
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_main\.mono\temp\bin\Tools\ThirteenProject.pdb
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_main\.mono\temp\obj\Tools\ThirteenProject.dll
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_main\.mono\temp\obj\Tools\ThirteenProject.pdb
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_Thimot\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyReference.cache
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_Thimot\.mono\temp\obj\Tools\ThirteenProject.dll
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_Thimot\.mono\temp\obj\Tools\ThirteenProject.pdb
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_Thimot\.mono\temp\bin\Tools\ThirteenProject.dll
+D:\thimo\Documents\EPITA\Ollopa\Ollopa_Thimot\.mono\temp\bin\Tools\ThirteenProject.pdb
+D:\Godot Games\Ollopa_main\.mono\temp\obj\Tools\ThirteenProject.dll
+D:\Godot Games\Ollopa_main\.mono\temp\obj\Tools\ThirteenProject.pdb
+D:\Godot Games\Ollopa_main\.mono\temp\bin\Tools\ThirteenProject.dll
+D:\Godot Games\Ollopa_main\.mono\temp\bin\Tools\ThirteenProject.pdb
+D:\Godot Games\Ollopa_main\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyReference.cache
+D:\Godot Games\Ollopa_main\.mono\temp\obj\Tools\ThirteenProject.csproj.CoreCompileInputs.cache
+D:\Godot Games\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.dll
+D:\Godot Games\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.pdb
+D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyReference.cache
+D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csproj.CoreCompileInputs.cache
+D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.dll
+D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.pdb
