@@ -117,7 +117,7 @@ public class PlayerMouvements : KinematicBody2D
 			vel.y = JUMP_POWER;
 			on_ground = false;
 		}
-		else if (vel.y != 0)
+		else if (vel.y != 0 && (!bond.IsPlaying() || bond.CurrentAnimation=="Run"))
 		{
 			bond.Play("Jump");
 		}
