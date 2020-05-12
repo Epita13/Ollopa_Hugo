@@ -27,6 +27,14 @@ public static class Player
 	public static Usable.Type UsableSelected = Usable.Type.Laser;
 	public static Building.Type BuildingSelected = Building.Type.SolarPanel;
 
+	public static void PhysicsProcess(float delta)
+	{
+		if (health <= 0)
+		{
+			PlayerState.SetState(PlayerState.State.Dead);
+		}
+	}
+
 	/// Ajoute de la vie au joueur. 
 	public static void AddHealth(float amount)
 	{

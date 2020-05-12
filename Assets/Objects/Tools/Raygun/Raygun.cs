@@ -6,8 +6,10 @@ public class Raygun : Node2D
 {
 
 
-	public const float POWER = 1000000.5f;
-	public const float RADIUS = 2500;
+	public const float POWER = 5.5f;
+	public const float RADIUS =2500f;
+
+	public const bool can_shoot = true;
 	
 	[Signal]
 	public delegate void hit(Vector2 xy,Vector2 az);
@@ -17,19 +19,43 @@ public class Raygun : Node2D
 
 	private RayCast2D raycast;
 	private AnimatedSprite anSprite;
-	
+
+	private Sprite begin;
+	private Sprite beam;
+	private Position2D end;
+	private Particles2D particule;
 
 	public override void _Ready()
 	{
 		anSprite = GetNode<AnimatedSprite>("Sprite_Raygun");
 		raycast = anSprite.GetNode<RayCast2D>("shoot_ray");
+		beam = GetNode<Sprite>("beam");
+		begin = GetNode<Sprite>("begin");
+		end = GetNode<Position2D>("end");
+		particule = end.GetNode<Particles2D>("explosion");
 		raycast.CastTo = new Vector2(RADIUS,raycast.CastTo.y);
+		begin.Visible = false;
+		beam.Visible = false;
 	}
 	
 	public void shoot()
 	{
+		begin.Visible = true;
+		beam.Visible = true;
 		if (raycast.IsColliding())
 		{
+			end.GlobalPosition = raycast.GetCollisionPoint();
+			
+			float collision = (raycast.GetCollisionPoint()-raycast.GlobalPosition).Length()*500/120;
+			
+			beam.Rotation = raycast.CastTo.Angle();
+			
+			var beamRegionRect = beam.RegionRect;
+			var vector2 = beamRegionRect.End;
+			vector2.x = collision;
+			beamRegionRect.End = vector2;
+			beam.RegionRect = beamRegionRect;
+			
 			var hit_collider = raycast.GetCollider();
 			// Collide with a block
 			if (hit_collider is TileMap)
@@ -43,15 +69,20 @@ public class Raygun : Node2D
 				{
 					TreeCollosion();
 				}
-
 			}
-			
-			
 		}
 		else
 		{
-			//GD.Print("shoot");
+			end.GlobalPosition = raycast.CastTo;
+			
+			beam.Rotation = raycast.CastTo.Angle();
+			var beamRegionRect = beam.RegionRect;
+			var vector2 = beamRegionRect.End;
+			vector2.x = raycast.CastTo.Length();
+			beamRegionRect.End = vector2;
+			beam.RegionRect = beamRegionRect;
 		}
+		particule.Emitting = true;
 	}
 
 	private void BlockCollision()
@@ -90,28 +121,28 @@ public class Raygun : Node2D
 	}
 
 
+
 	public override void _Process(float delta)
 	{
 		if (PlayerState.GetState() != PlayerState.State.Normal || Player.UsableSelected != Usable.Type.Laser)
 			return;
 		
 		LookAt(GetGlobalMousePosition());
+		
+		Vector2 mouse_position = GetLocalMousePosition();
+		Vector2 max_cast_to = mouse_position.Normalized() * RADIUS;
+		raycast.CastTo = max_cast_to;
 
 		if (Input.IsActionPressed("mouse1"))
 		{
 			shoot();
+			particule.Emitting = true;
 		}
-	}
-
-
-	public void Ray()
-	{
-		Vector2 globalRaycastPos = (new Vector2(Mathf.Cos(GlobalRotation)*raycast.Position.x, Mathf.Sin(GlobalRotation)*raycast.Position.y)) + GlobalPosition;
-		var d = raycast.GetCollisionPoint() - globalRaycastPos;
-		float length = d.Length();
-		Line2D s = GetNode<Line2D>("Ray");
-		s.Visible = true;
-		s.SetPointPosition(1, new Vector2(length/Scale.x, 0));
-
+		if (Input.IsActionJustReleased("mouse1"))
+		{
+			begin.Visible = false;
+			beam.Visible = false;
+			particule.Emitting = false;
+		}
 	}
 }
