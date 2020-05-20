@@ -70,6 +70,10 @@ public class Raygun : Node2D
 					TreeCollosion();
 				}
 			}
+			else if (hit_collider is Ennemy_Fly)
+			{
+				EnemyCollision();
+			}
 		}
 		else
 		{
@@ -85,6 +89,11 @@ public class Raygun : Node2D
 		particule.Emitting = true;
 	}
 
+	private void EnemyCollision()
+	{
+		Ennemy_Fly t = (Ennemy_Fly)raycast.GetCollider();
+		t.Damage(POWER);
+	}
 	private void BlockCollision()
 	{
 		TileMap tilemap = (TileMap)raycast.GetCollider();

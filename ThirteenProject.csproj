@@ -59,6 +59,8 @@
     <Compile Include="Assets\Objects\Buildings\Rafinery\Rafinery.cs" />
     <Compile Include="Assets\Objects\Buildings\Spaceship\Spaceship.cs" />
     <Compile Include="Assets\Objects\Buildings\Storage\Storage.cs" />
+    <Compile Include="Assets\Objects\Enemy\Enemies.cs" />
+    <Compile Include="Assets\Objects\Enemy\Ennemy_Fly.cs" />
     <Compile Include="Assets\Objects\Player\PlayerInputs.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
     <Compile Include="Assets\Objects\Player\PlayerZone.cs" />

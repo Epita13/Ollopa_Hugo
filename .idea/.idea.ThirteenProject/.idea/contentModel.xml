@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Hugo\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Hugo\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_ThirteenProject.-1197514237.00" t="ExcludeRecursive" />
-    <e p="D:\Godot Games\Ollopa_Hugo" t="IncludeRecursive">
+    <e p="C:\Users\Tommi\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Tommi\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_ThirteenProject.-333917242.00" t="ExcludeRecursive" />
+    <e p="D:\GitHub\Ollopa_repository\Ollopa_Hugo" t="IncludeRecursive">
       <e p=".mono\temp\bin" t="ExcludeRecursive" />
       <e p=".mono\temp\obj" t="ExcludeRecursive" />
       <e p="Assets" t="Include">
@@ -33,6 +33,10 @@
             <e p="Storage" t="Include">
               <e p="Storage.cs" t="Include" />
             </e>
+          </e>
+          <e p="Enemy" t="Include">
+            <e p="Enemies.cs" t="Include" />
+            <e p="Ennemy_Fly.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="PlayerInputs.cs" t="Include" />

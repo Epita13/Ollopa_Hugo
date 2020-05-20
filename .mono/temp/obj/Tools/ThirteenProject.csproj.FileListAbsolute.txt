@@ -20,3 +20,9 @@ D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyRe
 D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csproj.CoreCompileInputs.cache
 D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.dll
 D:\Godot Games\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.pdb
+D:\GitHub\Ollopa_repository\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.dll
+D:\GitHub\Ollopa_repository\Ollopa_Hugo\.mono\temp\bin\Tools\ThirteenProject.pdb
+D:\GitHub\Ollopa_repository\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csprojAssemblyReference.cache
+D:\GitHub\Ollopa_repository\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.csproj.CoreCompileInputs.cache
+D:\GitHub\Ollopa_repository\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.dll
+D:\GitHub\Ollopa_repository\Ollopa_Hugo\.mono\temp\obj\Tools\ThirteenProject.pdb

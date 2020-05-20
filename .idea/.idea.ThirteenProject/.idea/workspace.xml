@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="166f30ce-a869-4316-af78-854784d099c5" name="Default Changelist" comment="" />
+    <list default="true" id="166f30ce-a869-4316-af78-854784d099c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ThirteenProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ThirteenProject/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ThirteenProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ThirteenProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharpEditor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharpEditor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharpEditor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharpEditor.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharpEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/assemblies/Debug/GodotSharpEditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/assemblies/Debug/api_hash_cache.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/assemblies/Debug/api_hash_cache.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/metadata/ide_server_meta.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/metadata/scripts_metadata.editor" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/metadata/scripts_metadata.editor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/metadata/scripts_metadata.editor_player" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/metadata/scripts_metadata.editor_player" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/bin/Tools/ThirteenProject.dll" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/bin/Tools/ThirteenProject.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/bin/Tools/ThirteenProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/bin/Tools/ThirteenProject.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/obj/Debug/ThirteenProject.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/obj/Debug/ThirteenProject.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.dll" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/.mono/temp/obj/Tools/ThirteenProject.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menus/MenuPlay.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menus/MenuPlay.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThirteenProject.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ThirteenProject.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/default_env.tres" beforeDir="false" afterPath="$PROJECT_DIR$/default_env.tres" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,21 +37,24 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Menus/MenuPlay.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Autres/Environement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Tools/RayGun/Raygun.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Autres/CurrentCamera.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/PlayerState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Player/PlayerZone.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Player/PlayerInputs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Player/PlayerMouvements.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Player/PlayerZone.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SceneGeneration/SceneGenerationScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Enemy/Enemies.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Enemy/Ennemy_Fly.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Tools/RayGun/Raygun.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/PlayerState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Autres/Environement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SceneGeneration/SceneGenerationScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Autres/CurrentCamera.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Objects/Player/PlayerMouvements.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Enemy/Enemies.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Tools/RayGun/Raygun.cs" />
       </list>
     </option>
@@ -66,6 +94,8 @@
       <workItem from="1588770379582" duration="2545000" />
       <workItem from="1588977989406" duration="3684000" />
       <workItem from="1589190558273" duration="26612000" />
+      <workItem from="1589987646300" duration="980000" />
+      <workItem from="1589988745293" duration="1301000" />
     </task>
     <servers />
   </component>
@@ -74,6 +104,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="129" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587046875411">
       <screen x="0" y="0" width="1366" height="728" />
